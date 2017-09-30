@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAlipay.m */; };
+		6D13114E1F802B1800F75F96 /* libAlipaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1311031F7DC96000F75F96 /* libAlipaySDK.a */; };
+		6D13117D1F80316000F75F96 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1311791F80305900F75F96 /* AlipaySDK.framework */; };
+		B3E7B58A1CC2AC0600A0062D /* RCTAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RCTAlipay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNAlipay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAlipay.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNAlipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAlipay.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNAlipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAlipay.m; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libRCTAlipay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTAlipay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D1311031F7DC96000F75F96 /* libAlipaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAlipaySDK.a; sourceTree = "<group>"; };
+		6D1311791F80305900F75F96 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		6DD444CD1F7D9E0A007B6D6C /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		B3E7B5881CC2AC0600A0062D /* RCTAlipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTAlipay.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* RCTAlipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTAlipay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D13117D1F80316000F75F96 /* AlipaySDK.framework in Frameworks */,
+				6D13114E1F802B1800F75F96 /* libAlipaySDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +49,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libRNAlipay.a */,
+				134814201AA4EA6300B7C361 /* libRCTAlipay.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,8 +57,11 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNAlipay.h */,
-				B3E7B5891CC2AC0600A0062D /* RNAlipay.m */,
+				B3E7B5881CC2AC0600A0062D /* RCTAlipay.h */,
+				B3E7B5891CC2AC0600A0062D /* RCTAlipay.m */,
+				6DD444CD1F7D9E0A007B6D6C /* AlipaySDK.bundle */,
+				6D1311791F80305900F75F96 /* AlipaySDK.framework */,
+				6D1311031F7DC96000F75F96 /* libAlipaySDK.a */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +69,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNAlipay */ = {
+		58B511DA1A9E6C8500147676 /* RCTAlipay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAlipay" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTAlipay" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -71,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = RNAlipay;
+			name = RCTAlipay;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNAlipay.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRCTAlipay.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -83,14 +93,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Facebook;
+				ORGANIZATIONNAME = 0x5e;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAlipay" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RCTAlipay" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -102,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNAlipay */,
+				58B511DA1A9E6C8500147676 /* RCTAlipay */,
 			);
 		};
 /* End PBXProject section */
@@ -112,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNAlipay.m in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* RCTAlipay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,15 +213,22 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAlipay;
+				PRODUCT_NAME = RCTAlipay;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -219,15 +236,22 @@
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNAlipay;
+				PRODUCT_NAME = RCTAlipay;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -235,7 +259,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNAlipay" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RCTAlipay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -244,7 +268,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAlipay" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTAlipay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

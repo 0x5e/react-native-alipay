@@ -3,7 +3,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:RNAlipay.xcodeproj">
+      location = "group:RCTAlipay.xcodeproj">
    </FileRef>
 </Workspace>
   
