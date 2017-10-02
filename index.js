@@ -1,6 +1,6 @@
 
 import { NativeModules } from 'react-native';
 
-const { RCTAlipay } = NativeModules;
+const { Alipay } = NativeModules;
 
-export default RCTAlipay;
+export default Alipay;

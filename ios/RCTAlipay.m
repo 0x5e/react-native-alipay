@@ -39,7 +39,8 @@ RCT_EXPORT_METHOD(getVersion:(RCTPromiseResolveBlock)resolve) {
 - (NSString *)appScheme {
     NSArray *urlTypes = NSBundle.mainBundle.infoDictionary[@"CFBundleURLTypes"];
     for (NSDictionary *urlType in urlTypes) {
-        if ([@"alipay" isEqualToString:urlType[@"CFBundleURLName"]]) {
+        NSString *urlName = urlType[@"CFBundleURLName"];
+        if ([urlName hasPrefix:@"alipay"]) {
             NSArray *schemes = urlType[@"CFBundleURLSchemes"];
             return schemes.firstObject;
         }

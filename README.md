@@ -1,7 +1,7 @@
 
 # react-native-alipay
 
-Alipay SDK for React Native. Support mobile webpage url pay. Support RN >= 0.47.
+Alipay SDK for React Native. Support mobile webpage url payment. Support RN >= 0.47.
 
 Native AlipaySDK library ([download](https://docs.open.alipay.com/54/104509)):
 
@@ -46,16 +46,18 @@ Native AlipaySDK library ([download](https://docs.open.alipay.com/54/104509)):
 import Alipay from 'react-native-alipay';
 
 // APP支付
-var orderInfo = {
+let orderInfo = {
   // ...
 };
 Alipay.pay(orderInfo).then((result) => {
+  // TODO: 未测试
   console.log(result);
 });
 
 // 手机网站转APP支付
-var h5PayUrl = '...';
+let h5PayUrl = '...';
 Alipay.payInterceptorWithUrl(h5PayUrl).then((result) => {
+  let {resultCode, returnUrl} = result;
   console.log(result);
 });
 ```
@@ -64,6 +66,7 @@ Alipay.payInterceptorWithUrl(h5PayUrl).then((result) => {
 
 - [x] 手机网站转APP支付（payInterceptorWithUrl）
 - [ ] APP支付功能待测试
-- [ ] 完善文档
 - [ ] react-native, ios, android, gradle 各个版本兼容性测试
+- [ ] 更详细的iOS接入步骤(https://docs.open.alipay.com/203/106493/)
+- [ ] 完善文档
 
