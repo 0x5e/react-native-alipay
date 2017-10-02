@@ -1,9 +1,16 @@
 
 # react-native-alipay
 
+Alipay SDK for React Native. Support mobile webpage url pay. Support RN >= 0.47.
+
+Native AlipaySDK library ([download](https://docs.open.alipay.com/54/104509)):
+
+- iOS: v15.4.1 (2017.7.26)
+- Android: v15.4.5 (2017.9.22)
+
 ## Getting started
 
-`$ npm install react-native-alipay --save`
+`$ yarn add 0x5e/react-native-alipay`
 
 ### Mostly automatic installation
 
@@ -15,15 +22,15 @@
 #### iOS
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-alipay` and add `RNAlipay.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNAlipay.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+2. Go to `node_modules` ➜ `react-native-alipay` and add `RCTAlipay.xcodeproj`
+3. In XCode, in the project navigator, select your project. Add `libRCTAlipay.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNAlipayPackage;` to the imports at the top of the file
-  - Add `new RNAlipayPackage()` to the list returned by the `getPackages()` method
+  - Add `import com.reactlibrary.AlipayPackage;` to the imports at the top of the file
+  - Add `new AlipayPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':react-native-alipay'
@@ -36,9 +43,27 @@
 
 ## Usage
 ```javascript
-import RNAlipay from 'react-native-alipay';
+import Alipay from 'react-native-alipay';
 
-// TODO: What to do with the module?
-RNAlipay;
+// APP支付
+var orderInfo = {
+  // ...
+};
+Alipay.pay(orderInfo).then((result) => {
+  console.log(result);
+});
+
+// 手机网站转APP支付
+var h5PayUrl = '...';
+Alipay.payInterceptorWithUrl(h5PayUrl).then((result) => {
+  console.log(result);
+});
 ```
-  
+
+## TODO
+
+- [x] 手机网站转APP支付（payInterceptorWithUrl）
+- [ ] APP支付功能待测试
+- [ ] 完善文档
+- [ ] react-native, ios, android, gradle 各个版本兼容性测试
+
