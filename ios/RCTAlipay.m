@@ -8,7 +8,30 @@
 
 #import "RCTAlipay.h"
 
+extern NSString *const RCTOpenURLNotification;
+
 @implementation RCTAlipay
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOpenURL:) name:RCTOpenURLNotification object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)handleOpenURL:(NSNotification *)notification {
+    NSString *urlString = notification.userInfo[@"url"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@", resultDic);
+        }];
+    }
+}
 
 - (dispatch_queue_t)methodQueue
 {
@@ -20,7 +43,7 @@ RCT_EXPORT_METHOD(pay:(NSString *)orderInfo
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     [AlipaySDK.defaultService payOrder:orderInfo fromScheme:self.appScheme callback:^(NSDictionary *resultDic) {
-        resolve(@[resultDic]);
+        resolve(resultDic);
     }];
 }
 
@@ -28,7 +51,7 @@ RCT_EXPORT_METHOD(payInterceptorWithUrl:(NSString *)urlStr
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     [AlipaySDK.defaultService payInterceptorWithUrl:urlStr fromScheme:self.appScheme callback:^(NSDictionary *resultDic) {
-        resolve(@[resultDic]);
+        resolve(resultDic);
     }];
 }
 
