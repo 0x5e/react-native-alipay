@@ -3,6 +3,7 @@ package com.reactlibrary;
 
 import com.alipay.sdk.app.H5PayCallback;
 import com.alipay.sdk.util.H5PayResultModel;
+import com.alipay.sdk.app.AuthTask;
 import com.alipay.sdk.app.PayTask;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -10,6 +11,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
+
+import java.util.Map;
 
 public class AlipayModule extends ReactContextBaseJavaModule {
 
@@ -26,11 +29,27 @@ public class AlipayModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void authWithInfo(final String infoStr, final Promise promise) {
+    Runnable runnable = new Runnable() {
+      @Override
+      public void run() {
+        AuthTask authTask = new AuthTask(getCurrentActivity());
+        Map<String, String> map = authTask.authV2(infoStr, true);
+        promise.resolve(getWritableMap(map));
+      }
+    };
+    Thread thread = new Thread(runnable);
+    thread.start();
+  }
+
+  @ReactMethod
   public void pay(final String orderInfo, final Promise promise) {
     Runnable runnable = new Runnable() {
       @Override
       public void run() {
-        promise.resolve(getPayTask().payV2(orderInfo, true));
+        PayTask payTask = new PayTask(getCurrentActivity());
+        Map<String, String> map = payTask.payV2(orderInfo, true);
+        promise.resolve(getWritableMap(map));
       }
     };
     Thread thread = new Thread(runnable);
@@ -39,27 +58,29 @@ public class AlipayModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void payInterceptorWithUrl(final String h5PayUrl, final Promise promise) {
-    getPayTask().payInterceptorWithUrl(h5PayUrl, true, new H5PayCallback() {
+    PayTask payTask = new PayTask(getCurrentActivity());
+    payTask.payInterceptorWithUrl(h5PayUrl, true, new H5PayCallback() {
       @Override
       public void onPayResult(H5PayResultModel h5PayResultModel) {
-        promise.resolve(H5PayResultModelToMap(h5PayResultModel));
+        WritableMap map = Arguments.createMap();
+        map.putString("resultCode", h5PayResultModel.getResultCode());
+        map.putString("returnUrl", h5PayResultModel.getReturnUrl());
+        promise.resolve(map);
       }
     });
   }
 
   @ReactMethod
   public void getVersion(Promise promise) {
-    promise.resolve(getPayTask().getVersion());
+    PayTask payTask = new PayTask(getCurrentActivity());
+    promise.resolve(payTask.getVersion());
   }
 
-  private PayTask getPayTask() {
-    return new PayTask(getCurrentActivity());
-  }
-
-  private WritableMap H5PayResultModelToMap(H5PayResultModel h5PayResultModel) {
-    WritableMap map = Arguments.createMap();
-    map.putString("resultCode", h5PayResultModel.getResultCode());
-    map.putString("returnUrl", h5PayResultModel.getReturnUrl());
-    return map;
+  private WritableMap getWritableMap(Map<String, String> map) {
+    WritableMap writableMap = Arguments.createMap();
+    for (Map.Entry<String, String> entry : map.entrySet()) {
+      writableMap.putString(entry.getKey(), entry.getValue());
+    }
+    return writableMap;
   }
 }

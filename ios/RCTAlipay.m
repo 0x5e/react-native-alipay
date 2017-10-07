@@ -8,7 +8,7 @@
 
 #import "RCTAlipay.h"
 
-extern NSString *const RCTOpenURLNotification;
+RCT_EXTERN NSString *const RCTOpenURLNotification;
 
 @implementation RCTAlipay
 
@@ -27,8 +27,12 @@ extern NSString *const RCTOpenURLNotification;
     NSString *urlString = notification.userInfo[@"url"];
     NSURL *url = [NSURL URLWithString:urlString];
     if ([url.host isEqualToString:@"safepay"]) {
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@", resultDic);
+        [AlipaySDK.defaultService processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"processOrderWithPaymentResult = %@", resultDic);
+        }];
+        
+        [AlipaySDK.defaultService processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"processAuth_V2Result = %@", resultDic);
         }];
     }
 }
@@ -38,6 +42,14 @@ extern NSString *const RCTOpenURLNotification;
     return dispatch_get_main_queue();
 }
 RCT_EXPORT_MODULE()
+
+RCT_EXPORT_METHOD(authWithInfo:(NSString *)infoStr
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+    [AlipaySDK.defaultService auth_V2WithInfo:infoStr fromScheme:self.appScheme callback:^(NSDictionary *resultDic) {
+        resolve(resultDic);
+    }];
+}
 
 RCT_EXPORT_METHOD(pay:(NSString *)orderInfo
                   resolver:(RCTPromiseResolveBlock)resolve
@@ -56,7 +68,7 @@ RCT_EXPORT_METHOD(payInterceptorWithUrl:(NSString *)urlStr
 }
 
 RCT_EXPORT_METHOD(getVersion:(RCTPromiseResolveBlock)resolve) {
-    resolve(@[AlipaySDK.defaultService.currentVersion]);
+    resolve(AlipaySDK.defaultService.currentVersion);
 }
 
 - (NSString *)appScheme {
