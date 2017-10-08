@@ -8,6 +8,12 @@ Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509
 - iOS: v15.4.1 (2017.7.26)
 - Android: v15.4.5 (2017.9.22)
 
+## Requirement
+
+React Native >= 0.20.
+iOS >= 7.0.
+Android >= 4.1 (API 16).
+
 ## Getting started
 
 `$ yarn add 0x5e/react-native-alipay`

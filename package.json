@@ -18,7 +18,7 @@
   "author": "gaosen <0x5e@sina.cn>",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.40"
+    "react-native": ">=0.20"
   },
   "homepage": "https://github.com/0x5e/react-native-alipay"
 }
