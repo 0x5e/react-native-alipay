@@ -10,44 +10,21 @@ Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509
 
 ## Requirement
 
-React Native >= 0.20.
-iOS >= 7.0.
-Android >= 4.1 (API 16).
+- React Native >= 0.20
+- iOS >= 7.0
+- Android >= 4.1 (API 16)
 
 ## Getting started
 
 `$ yarn add 0x5e/react-native-alipay`
 
-### Mostly automatic installation
+### Native module installation
 
-`$ react-native link react-native-alipay`
-
-### Manual installation
-
-
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-alipay` and add `RCTAlipay.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRCTAlipay.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.AlipayPackage;` to the imports at the top of the file
-  - Add `new AlipayPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-alipay'
-  	project(':react-native-alipay').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-alipay/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-alipay')
-  	```
+- [iOS Setup]((./docs/ios-setup.md))
+- [Android Setup]((./docs/android-setup.md))
 
 ## Usage
+
 ```javascript
 import Alipay from 'react-native-alipay';
 
@@ -88,7 +65,7 @@ try {
 ）
 - [x] 手机网站转APP支付（https://docs.open.alipay.com/204/105695/）
 - [ ] react-native, ios, android, gradle 各个版本兼容性测试
-- [ ] 更详细的iOS接入步骤(https://docs.open.alipay.com/203/106493/)
+- [x] 更详细的iOS接入步骤(https://docs.open.alipay.com/203/106493/)
 - [ ] 完善文档
 - [ ] Demo工程
 - [ ] 集成接口签名
