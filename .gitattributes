@@ -1,1 +1,3 @@
 *.pbxproj -text
+ios/* linguist-language=JavaScript
+android/* linguist-language=JavaScript
