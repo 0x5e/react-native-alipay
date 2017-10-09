@@ -8,13 +8,14 @@
 
 #import "RCTAlipay.h"
 
-RCT_EXTERN NSString *const RCTOpenURLNotification;
+// RCTLinking/RCTLinkingManager.m
+static NSString *const kOpenURLNotification = @"RCTOpenURLNotification";
 
 @implementation RCTAlipay
 
 - (instancetype)init {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOpenURL:) name:RCTOpenURLNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOpenURL:) name:kOpenURLNotification object:nil];
     }
     return self;
 }
