@@ -20,8 +20,8 @@ Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509
 
 ### Native module installation
 
-- [iOS Setup]((./docs/ios-setup.md))
-- [Android Setup]((./docs/android-setup.md))
+- [iOS Setup](./docs/ios-setup.md)
+- [Android Setup](./docs/android-setup.md)
 
 ## API Documentation
 

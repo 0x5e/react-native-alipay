@@ -1,8 +1,7 @@
 # iOS Setup
 
-## Libraries
-
 1. In XCode, in the project navigator, right click `Libraries` -> `Add Files to [your project's name]`, go to `node_modules/react-native-alipay` and add `RCTAlipay.xcodeproj`
+
 2. Select your project. Add the following libraries to your project's `Build Phases` -> `Link Binary With Libraries`:
     - `libc++.tbd`
     - `libz.tbd`
@@ -17,9 +16,15 @@
     - `UIKit.framework`
     - **`libRCTAlipay.a`**
 
-## RCTLinkingManager
+3. Add `alipay` into `LSApplicationQueriesSchemes` in `Targets` -> `info` -> `Custom iOS Target Properties`, or edit `Info.plist` like this:
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>alipay</string> <!-- Add this line -->
+</array>
+```
 
-Open up `AppDelegate.m`, implement two methods in `AppDelegate` like this:
+4. Open up `AppDelegate.m`, implement two methods in `AppDelegate` like this:
 ```objc
 // ...
 
@@ -45,7 +50,5 @@ Open up `AppDelegate.m`, implement two methods in `AppDelegate` like this:
 @end
 ```
 
-## URL Type
-
-Create a url type in `Info` -> `URL Types`.
+5. Create a url type in `Info` -> `URL Types`.
 Set `alipay` to `Identifier`, set an unique id to `URL Schemes` (whatever you like).
