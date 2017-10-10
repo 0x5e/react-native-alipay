@@ -1,4 +1,3 @@
-
 {
   "name": "react-native-alipay",
   "version": "1.0.0",
@@ -20,5 +19,8 @@
   "peerDependencies": {
     "react-native": ">=0.20"
   },
-  "homepage": "https://github.com/0x5e/react-native-alipay"
+  "homepage": "https://github.com/0x5e/react-native-alipay",
+  "devDependencies": {
+    "react-native": "0.20.0"
+  }
 }
