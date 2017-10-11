@@ -18,7 +18,7 @@ Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509
 
 ## Getting started
 
-`$ yarn add 0x5e/react-native-alipay`
+`$ yarn add @0x5e/react-native-alipay`
 
 ### Native module installation
 
@@ -60,7 +60,7 @@ Example code:
 
 ```javascript
 import QueryString from 'query-string';
-import Alipay from 'react-native-alipay';
+import Alipay from '@0x5e/react-native-alipay';
 
 // 快捷登录授权
 try {
@@ -122,7 +122,7 @@ Example code:
 
 ```javascript
 import QueryString from 'query-string';
-import Alipay from 'react-native-alipay';
+import Alipay from '@0x5e/react-native-alipay';
 
 // APP支付
 try {
@@ -171,7 +171,7 @@ Example code:
 
 ```javascript
 import QueryString from 'query-string';
-import Alipay from 'react-native-alipay';
+import Alipay from '@0x5e/react-native-alipay';
 
 // 手机网站转APP支付
 try {
