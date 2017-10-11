@@ -1,7 +1,9 @@
 
 # react-native-alipay
 
-[![Build Status](https://travis-ci.org/0x5e/react-native-alipay.svg?branch=master)](https://travis-ci.org/0x5e/react-native-alipay)
+[![Build Status](https://img.shields.io/travis/0x5e/react-native-alipay/master.svg)](https://travis-ci.org/0x5e/react-native-alipay)
+[![NPM Version](https://img.shields.io/npm/v/@0x5e/react-native-alipay.svg)](https://npmjs.org/package/@0x5e/react-native-alipay)
+[![License](https://img.shields.io/npm/l/@0x5e/react-native-alipay.svg)](./LICENSE)
 
 Alipay SDK for React Native. Support mobile webpage url payment. Support RN >= 0.47.
 
@@ -206,16 +208,12 @@ try {
 
 ## TODO
 
-- [ ] 快捷登录授权（https://docs.open.alipay.com/218/105327/）
-- [ ] APP支付（https://docs.open.alipay.com/204/105465/
+- [x] 快捷登录授权（https://docs.open.alipay.com/218/105327/）
+- [x] APP支付（https://docs.open.alipay.com/204/105465/
 ）
 - [x] 手机网站转APP支付（https://docs.open.alipay.com/204/105695/）
-- [ ] react-native, ios, android, gradle 各个版本兼容性测试
+- [x] 单元测试
 - [x] 更详细的iOS接入步骤(https://docs.open.alipay.com/203/106493/)
 - [x] 完善文档
 - [ ] Demo工程
 - [ ] 集成接口签名
-
-## License
-
-MIT
