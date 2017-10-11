@@ -1,6 +1,6 @@
 # iOS Setup
 
-1. In XCode, in the project navigator, right click `Libraries` -> `Add Files to [your project's name]`, go to `node_modules/react-native-alipay` and add `RCTAlipay.xcodeproj`
+1. In XCode, in the project navigator, right click `Libraries` -> `Add Files to [your project's name]`, go to `node_modules/@0x5e/react-native-alipay` and add `RCTAlipay.xcodeproj`
 
 2. Select your project. Add the following libraries to your project's `Build Phases` -> `Link Binary With Libraries`:
     - `libc++.tbd`
