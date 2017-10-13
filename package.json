@@ -1,6 +1,6 @@
 {
   "name": "@0x5e/react-native-alipay",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Alipay SDK for React Native. Support RN >= 0.47.",
   "main": "index.js",
   "scripts": {
