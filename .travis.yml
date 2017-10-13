@@ -1,6 +1,6 @@
 language: node_js
-env:
-  - NODE_ENV='test'
+node_js:
+  - '8'
 cache:
   directories:
     - $HOME/.yarn-cache
@@ -10,9 +10,7 @@ cache:
 before_install:
   - nvm install 8
 install:
-  - npm install
-script:
-  - npm test
+  - npm install --dev
 matrix:
   include:
     - language: objective-c
@@ -31,3 +29,7 @@ matrix:
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
       script:
         - cd android && ./gradlew build
+    - language: node_js
+      os: linux
+      script:
+        - npm test

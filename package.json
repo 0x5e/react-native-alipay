@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/0x5e/react-native-alipay",
   "devDependencies": {
+    "babel-core": "^6.0.0",
     "babel-jest": "^21.2.0",
     "jest": "^21.2.1",
     "query-string": "^5.0.0",

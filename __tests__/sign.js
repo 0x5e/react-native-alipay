@@ -42,4 +42,4 @@ test('signature verification (RSA2)', () => {
   let signedQuery = Alipay.sign(params, privateKey);
   expect(QueryString.parse(signedQuery).sign).toBe(sign);
 
-})
+});
