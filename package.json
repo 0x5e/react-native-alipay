@@ -4,7 +4,7 @@
   "description": "Alipay SDK for React Native. Support RN >= 0.47.",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,12 @@
   },
   "homepage": "https://github.com/0x5e/react-native-alipay",
   "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "jest": "^21.2.1",
+    "query-string": "^5.0.0",
     "react-native": "0.20.0"
+  },
+  "dependencies": {
+    "browserify-sign": "^4.0.4"
   }
 }
