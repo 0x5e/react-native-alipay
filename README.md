@@ -167,7 +167,11 @@ try {
 If you want to do client side signature instead of server side (not recommend), you can use this.
 
 - `object` {Object} Object to be signed. The `object.sign_type` can specify `RSA` (default) or `RSA2`.
-- `privateKey` {String} Private key in `PKCS#8` format.
+- `privateKey` {String} Private key in `PKCS#1` or `PKCS#8` format.
+
+Note: 
+`PKCS#1` private key should have wrapped with `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----`
+`PKCS#8` private key should have wrapped with `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----`
 
 Returns The query string with signature. See [Process of signature](https://docs.open.alipay.com/291/106118) for detail.
 
@@ -184,7 +188,7 @@ let params = {
   timestamp: '2017-10-13 00:00:00',
   version: '1.0',
 };
-let privateKey = '...';
+let privateKey = '-----BEGIN RSA PRIVATE KEY-----\n' + ... + '\n-----END RSA PRIVATE KEY-----';
 let signedQuery = Alipay.sign(params, privateKey);
 console.info(signedQuery); // app_id=2183&biz_content=%7B%22scopes%22%3A%5B%22auth_base%22%5D%2C%22state%22%3A%22init%22%7D&method=alipay.user.info.auth&sign_type=RSA&timestamp=2017-10-13%2000%3A00%3A00&version=1.0&sign=xxxx
 ```

@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native';
-import Crypto from 'browserify-sign';
+import { Buffer } from 'buffer';
+import RSASign from 'jsrsasign';
 
 const { Alipay } = NativeModules;
 
@@ -29,16 +30,12 @@ Alipay.sign = (object, privateKey) => {
     sortedQuery += `${(i === 0) ? '' : '&'}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
   }
 
-  // Add header & footer to private key
-  if (privateKey.indexOf('PRIVATE KEY') === -1) {
-    privateKey = `-----BEGIN PRIVATE KEY-----\n${privateKey}\n-----END PRIVATE KEY-----`;
-  }
-
   // Create signature
-  let algorithm = {RSA: 'RSA-SHA1', RSA2: 'RSA-SHA256'}[object.sign_type];
-  let sign = Crypto.createSign(algorithm)
-    .update(sortedQuery)
-    .sign(privateKey, 'base64');
+  let alg = {RSA: 'SHA1withRSA', RSA2: 'SHA256withRSA'}[object.sign_type];
+  let sig = new RSASign.KJUR.crypto.Signature({alg});
+  sig.init(RSASign.KEYUTIL.getKey(privateKey));
+  sig.updateString(sortedQuery);
+  let sign = Buffer.from(sig.sign(), 'hex').toString('base64');
 
   sortedQuery += `&sign=${encodeURIComponent(sign)}`;
   return sortedQuery;
