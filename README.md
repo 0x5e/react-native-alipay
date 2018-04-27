@@ -10,8 +10,8 @@ Alipay SDK for React Native. Support mobile webpage url payment. Support RN >= 0
 
 Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509)):
 
-- iOS: v15.5.0 (2017.10.24)
-- Android: v15.4.5 (2017.9.22)
+- iOS: v15.5.3 (2018.4.2)
+- Android: v15.5.3 (2018.4.2)
 
 ## Features
 

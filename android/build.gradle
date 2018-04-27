@@ -30,5 +30,5 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/alipaySdk-20170922.jar')
+    compile files('libs/alipaySdk-20180403.jar')
 }
