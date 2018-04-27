@@ -11,6 +11,12 @@
 // RCTLinking/RCTLinkingManager.m
 static NSString *const kOpenURLNotification = @"RCTOpenURLNotification";
 
+@interface RCTAlipay ()
+
+@property (nonatomic, copy) RCTPromiseResolveBlock payOrderResolve;
+
+@end
+
 @implementation RCTAlipay
 
 - (instancetype)init {
@@ -28,8 +34,13 @@ static NSString *const kOpenURLNotification = @"RCTOpenURLNotification";
     NSString *urlString = notification.userInfo[@"url"];
     NSURL *url = [NSURL URLWithString:urlString];
     if ([url.host isEqualToString:@"safepay"]) {
+        __weak __typeof__(self) weakSelf = self;
         [AlipaySDK.defaultService processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"processOrderWithPaymentResult = %@", resultDic);
+            if (weakSelf.payOrderResolve) {
+                weakSelf.payOrderResolve(resultDic);
+                weakSelf.payOrderResolve = nil;
+            }
         }];
         
         [AlipaySDK.defaultService processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
@@ -55,8 +66,9 @@ RCT_EXPORT_METHOD(authWithInfo:(NSString *)infoStr
 RCT_EXPORT_METHOD(pay:(NSString *)orderInfo
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
+    self.payOrderResolve = resolve;
     [AlipaySDK.defaultService payOrder:orderInfo fromScheme:self.appScheme callback:^(NSDictionary *resultDic) {
-        resolve(resultDic);
+//        resolve(resultDic);
     }];
 }
 
