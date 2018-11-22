@@ -26,9 +26,10 @@ android {
 
 repositories {
     mavenCentral()
+    flatDir { dirs 'libs' }
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile files('libs/alipaySdk-20180403.jar')
+    compile(name: 'alipaySdk-15.5.7-20181023110930-noUtdid', ext: 'aar')
 }
