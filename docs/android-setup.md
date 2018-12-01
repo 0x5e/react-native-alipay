@@ -27,16 +27,23 @@ public class MainApplication extends Application implements ReactApplication {
 
 2. Append the following lines to `android/settings.gradle`:
 ```gradle
-include ':react-native-alipay'
-project(':react-native-alipay').projectDir = new File(rootProject.projectDir, '../node_modules/@0x5e/react-native-alipay/android')
+include ':@0x5e_react-native-alipay'
+project(':@0x5e_react-native-alipay').projectDir = new File(rootProject.projectDir, '../node_modules/@0x5e/react-native-alipay/android')
 ```
 
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
 ```gradle
-    compile project(':react-native-alipay')
+  compile project(':@0x5e_react-native-alipay')
 ```
 
-4. Append the following lines to `android/app/proguard-rules.pro`
+4. Insert the following lines inside allprojects => repositories in `android/build.gradle`:
+```gradle
+  flatDir {
+    dirs "$rootDir/../node_modules/@0x5e/react-native-alipay/android/libs"
+  }
+```
+
+5. Append the following lines to `android/app/proguard-rules.pro`
 ```
 -keep class com.alipay.** { *; }
 ```
