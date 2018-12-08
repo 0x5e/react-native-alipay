@@ -9,7 +9,7 @@
 
 ////////////////////////////////////////////////////////
 ///////////////// 支付宝标准版本支付SDK ///////////////////
-/////////// version:15.5.7  motify:2018.10.25///////////
+/////////// version:15.5.9  motify:2018.11.26///////////
 ////////////////////////////////////////////////////////
 
 #import <UIKit/UIKit.h>
@@ -154,25 +154,6 @@ typedef enum {
                    fromScheme:(NSString *)schemeStr
                      callback:(CompletionBlock)completionBlock;
 
-/**
- *  从h5链接中获取订单串接口（自版本15.4.0起已废弃，请使用payInterceptorWithUrl...）
- *
- *  @param urlStr           需要被拦截解析的 h5 链接
- *
- *  @return                 从url中获取到的支付订单信息字串 (若返回空，则该 h5 链接非 h5 支付链接)
- */
-- (NSString*)fetchOrderInfoFromH5PayUrl:(NSString*)urlStr;
-
-/**
- *  h5链接获取到的订单串支付接口（自版本15.4.0起已废弃，请使用payInterceptorWithUrl...）
- *
- *  @param orderStr       支付订单信息字串
- *  @param schemeStr      调用支付的app注册在info.plist中的scheme
- *  @param completionBlock 支付结果回调Block，用于wap支付结果回调（非跳转钱包支付）
- */
-- (void)payUrlOrder:(NSString *)orderStr
-         fromScheme:(NSString *)schemeStr
-           callback:(CompletionBlock)completionBlock;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
