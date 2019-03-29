@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
   s.resource = 'AlipaySDK.bundle'
-  s.vendored_frameworks = 'AlipaySDK.framework'
-  # s.vendored_libraries = "libAlipaySDK.a"
+  # s.vendored_frameworks = 'AlipaySDK.framework'
+  s.vendored_libraries = "libAlipaySDK.a"
   s.frameworks = "SystemConfiguration", "CoreTelephony", "QuartzCore", "CoreText", "CoreGraphics", "UIKit", "Foundation", "CFNetwork", "CoreMotion"
   s.library = "c++", "z"
 
