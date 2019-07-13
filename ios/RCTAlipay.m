@@ -30,6 +30,10 @@ static NSString *const kOpenURLNotification = @"RCTOpenURLNotification";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 - (void)handleOpenURL:(NSNotification *)notification {
     NSString *urlString = notification.userInfo[@"url"];
     NSURL *url = [NSURL URLWithString:urlString];
