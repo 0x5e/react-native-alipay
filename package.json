@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/0x5e/react-native-alipay.git"
   },
+  "types": "./index.d.ts",
   "keywords": [
     "alipay",
     "react-native"
