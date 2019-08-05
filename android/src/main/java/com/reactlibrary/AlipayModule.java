@@ -1,6 +1,7 @@
 
 package com.reactlibrary;
 
+import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.H5PayCallback;
 import com.alipay.sdk.util.H5PayResultModel;
 import com.alipay.sdk.app.AuthTask;
@@ -40,6 +41,16 @@ public class AlipayModule extends ReactContextBaseJavaModule {
     };
     Thread thread = new Thread(runnable);
     thread.start();
+  }
+
+  // 添加沙箱模式
+  @ReactMethod
+  public void setAlipaySandbox(Boolean isSandbox) {
+    if(isSandbox){
+      EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+    }else {
+      EnvUtils.setEnv(EnvUtils.EnvEnum.ONLINE);
+    }
   }
 
   @ReactMethod
