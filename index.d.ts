@@ -10,6 +10,9 @@ declare namespace Alipay {
   
   function authWithInfo(infoStr: string): IResult;
 
+  // 设置沙箱模式
+  function setAlipaySandbox(isSandbox: boolean): void
+
   function pay(infoStr: string): IResult;
 
   function payInterceptorWithUrl(infoStr: string): {
