@@ -34,6 +34,6 @@ repositories {
 }
 
 dependencies {
-    implementation "com.facebook.react:react-native:+"
-    implementation fileTree(dir: "libs", include: ["*.aar"])
+    compile 'com.facebook.react:react-native:+'
+    compile(name: 'alipaySdk-15.7.5-20200422171636-noUtdid', ext: 'aar')
 }
