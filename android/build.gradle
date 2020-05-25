@@ -35,5 +35,5 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile(name: 'alipaySdk-15.7.5-20200422171636-noUtdid', ext: 'aar')
+    compile(name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
 }
