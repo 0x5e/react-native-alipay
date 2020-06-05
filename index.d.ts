@@ -8,17 +8,17 @@ interface IResult {
 
 declare namespace Alipay {
   
-  function authWithInfo(infoStr: string): IResult;
+  function authWithInfo(infoStr: string): Promise<IResult>;
 
   // 设置沙箱模式
   function setAlipaySandbox(isSandbox: boolean): void
 
-  function pay(infoStr: string): IResult;
+  function pay(infoStr: string): Promise<IResult>;
 
-  function payInterceptorWithUrl(infoStr: string): {
+  function payInterceptorWithUrl(infoStr: string): Promise<{
     resultCode: TStatus;
     returnUrl: string;
-  };
+  }>;
   
   function sign(infoStr: string): string;
 }
