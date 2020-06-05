@@ -1,22 +1,22 @@
-type TStatus = '9000' | '8000' | '4000' | '5000' | '6001' | '6002';
+export type AlipayResultCode = '9000' | '8000' | '4000' | '5000' | '6001' | '6002';
 
-interface IResult {
-  resultStatus: TStatus;
+export interface AlipayResult {
+  resultStatus: AlipayResultCode;
   result: string;
   memo: string;
 }
 
 declare namespace Alipay {
   
-  function authWithInfo(infoStr: string): Promise<IResult>;
+  function authWithInfo(infoStr: string): Promise<AlipayResult>;
 
   // 设置沙箱模式
   function setAlipaySandbox(isSandbox: boolean): void
 
-  function pay(infoStr: string): Promise<IResult>;
+  function pay(infoStr: string): Promise<AlipayResult>;
 
   function payInterceptorWithUrl(infoStr: string): Promise<{
-    resultCode: TStatus;
+    resultCode: AlipayResultCode;
     returnUrl: string;
   }>;
   
