@@ -70,9 +70,14 @@ RCT_EXPORT_METHOD(authWithInfo:(NSString *)infoStr
 RCT_EXPORT_METHOD(pay:(NSString *)orderInfo
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
+    // 没有安装支付宝APP的情况下会通过callback返回支付结果
+    // RN的promise只能调用一次，所以调用完成后需要清除保存的promise
     self.payOrderResolve = resolve;
+    
+    __weak __typeof__(self) weakSelf = self;
     [AlipaySDK.defaultService payOrder:orderInfo fromScheme:self.appScheme callback:^(NSDictionary *resultDic) {
-//        resolve(resultDic);
+        weakSelf.payOrderResolve(resultDic);
+        weakSelf.payOrderResolve = nil;
     }];
 }
 
@@ -92,7 +97,7 @@ RCT_EXPORT_METHOD(getVersion:(RCTPromiseResolveBlock)resolve) {
     NSArray *urlTypes = NSBundle.mainBundle.infoDictionary[@"CFBundleURLTypes"];
     for (NSDictionary *urlType in urlTypes) {
         NSString *urlName = urlType[@"CFBundleURLName"];
-        if ([urlName hasPrefix:@"alipay"]) {
+        if ([urlName hasPrefix:@"shihuimao"]) {
             NSArray *schemes = urlType[@"CFBundleURLSchemes"];
             return schemes.firstObject;
         }

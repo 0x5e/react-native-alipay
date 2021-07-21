@@ -1,35 +1,48 @@
 {
-  "name": "@0x5e/react-native-alipay",
+  "name": "@shm-open/react-native-alipay",
   "version": "0.2.6",
   "description": "Alipay SDK for React Native. Support RN >= 0.47.",
-  "main": "index.js",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "android/",
+    "ios/",
+    "lib/",
+    "*.podspec"
+  ],
   "scripts": {
-    "test": "jest"
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf lib",
+    "compile": "tsc -d",
+    "start": "concurrently npm:watch-ts npm:sync-to-app",
+    "watch-ts": "npm run compile -- --watch",
+    "sync-to-app": "if [ $SHM_APP_SOURCE_PATH ]; then msf ./ $SHM_APP_SOURCE_PATH/node_modules/@shm-open/react-native-alipay; else tail -f /dev/null; fi",
+    "release": "npm test && npm run build && standard-version && git push --follow-tags origin master && npm publish",
+    "test": "echo 'no test'"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/0x5e/react-native-alipay.git"
+    "url": "https://github.com/shm-open/react-native-alipay.git"
   },
-  "types": "./index.d.ts",
   "keywords": [
     "alipay",
+    "react",
     "react-native"
   ],
-  "author": "gaosen <0x5e@sina.cn>",
+  "author": "shihuimiao",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.20"
+    "react-native": "*"
   },
-  "homepage": "https://github.com/0x5e/react-native-alipay",
+  "homepage": "https://github.com/shm-open/react-native-alipay",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^21.2.0",
-    "jest": "^21.2.1",
-    "query-string": "^5.0.0",
-    "react-native": "^0.20.0"
+    "@shm-open/eslint-config-bundle": "1.2.0",
+    "@types/react-native": "0.64.12",
+    "concurrently": "6.2.0",
+    "msf-cli": "1.2.2",
+    "standard-version": "9.3.1",
+    "typescript": "4.3.5"
   },
-  "dependencies": {
-    "buffer": "^5.0.8",
-    "jsrsasign": "^8.0.4"
-  }
+  "dependencies": {}
 }

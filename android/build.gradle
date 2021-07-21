@@ -1,39 +1,50 @@
 apply plugin: 'com.android.library'
 
-def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+def getExtOrDefault(name) {
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['ReactNativeWechat_' + name]
 }
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 23)
-    buildToolsVersion safeExtGet('buildToolsVersion', '23.0.1')
+    compileSdkVersion getExtOrDefault('compileSdkVersion')
+    buildToolsVersion getExtOrDefault('buildToolsVersion')
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion getExtOrDefault('minSdkVersion')
+        targetSdkVersion getExtOrDefault('targetSdkVersion')
         versionCode 1
         versionName "1.0"
     }
     lintOptions {
         abortOnError false
     }
+
+    buildTypes {
+        release {
+            consumerProguardFiles   'proguard-rules.pro'
+        }
+    }
 }
 
 repositories {
     mavenCentral()
-    flatDir { dirs 'libs' }
+    google()
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url "$rootDir/../node_modules/react-native/android"
+    }
 }
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    implementation fileTree(dir: "libs", include: ["*.aar"])
+    implementation(group: 'com.alipay', name:'alipaysdk', version: '+')
 }
