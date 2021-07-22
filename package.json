@@ -1,6 +1,6 @@
 {
   "name": "@shm-open/react-native-alipay",
-  "version": "0.2.6",
+  "version": "1.0.0",
   "description": "Alipay SDK for React Native. Support RN >= 0.47.",
   "type": "module",
   "main": "lib/index.js",
