@@ -1,4 +1,4 @@
-# react-native-alipay
+# react-native-alipay ![Node.js CI](https://github.com/shm-open/react-native-alipay/workflows/Node.js%20CI/badge.svg)
 
 [![NPM Version](https://img.shields.io/npm/v/@0x5e/react-native-alipay.svg)](https://npmjs.org/package/@0x5e/react-native-alipay)
 [![Dependency Status](https://img.shields.io/david/0x5e/react-native-alipay.svg)](https://david-dm.org/0x5e/react-native-alipay)
@@ -9,21 +9,21 @@ Alipay SDK for React Native. Support mobile webpage url payment. Support RN >= 0
 
 Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509)):
 
-- iOS: v15.5.9 (2018.11.26)
-- Android: v15.5.9 (2018.11.26)
+-   iOS: v15.5.9 (2018.11.26)
+-   Android: v15.5.9 (2018.11.26)
 
 ## Features
 
-- [x] 快捷登录授权（ https://docs.open.alipay.com/218/105327/ ）
-- [x] APP 支付（ https://docs.open.alipay.com/204/105465/ ）
-- [x] 手机网站转 APP 支付（ https://docs.open.alipay.com/204/105695/ ）
-- [x] 参数签名（ https://docs.open.alipay.com/291/106118/ ）
+-   [x] 快捷登录授权（ https://docs.open.alipay.com/218/105327/ ）
+-   [x] APP 支付（ https://docs.open.alipay.com/204/105465/ ）
+-   [x] 手机网站转 APP 支付（ https://docs.open.alipay.com/204/105695/ ）
+-   [x] 参数签名（ https://docs.open.alipay.com/291/106118/ ）
 
 ## Requirement
 
-- React Native >= 0.20
-- iOS >= 7.0
-- Android >= 4.4 (API 19)
+-   React Native >= 0.20
+-   iOS >= 7.0
+-   Android >= 4.4 (API 19)
 
 ## Getting started
 
@@ -31,14 +31,14 @@ Native AlipaySDK library ([download page](https://docs.open.alipay.com/54/104509
 
 ### Native module installation
 
-- [iOS Setup](./docs/ios-setup.md)
-- [Android Setup](./docs/android-setup.md)
+-   [iOS Setup](./docs/ios-setup.md)
+-   [Android Setup](./docs/android-setup.md)
 
 ## API Documentation
 
 ### Alipay.authWithInfo(infoStr)
 
-- `infoStr` {String} Auth request info in query string format. Must be signed before use. See [Auth request params description](https://docs.open.alipay.com/218/105327).
+-   `infoStr` {String} Auth request info in query string format. Must be signed before use. See [Auth request params description](https://docs.open.alipay.com/218/105327).
 
 Returns object with following fields:
 
@@ -68,32 +68,32 @@ The `result_code` description:
 Example code:
 
 ```javascript
-import QueryString from "query-string";
-import Alipay from "@0x5e/react-native-alipay";
+import QueryString from 'query-string';
+import Alipay from '@0x5e/react-native-alipay';
 
 // 快捷登录授权
 try {
-  let infoStr =
-    "apiname=com.alipay.account.auth&method=alipay.open.auth.sdk.code.get&app_id=xxxx&app_name=mc&biz_type=openservice&pid=xxxx&product_id=APP_FAST_LOGIN&scope=kuaijie&target_id=xxxx&auth_type=AUTHACCOUNT&sign_type=RSA2&sign=xxxx"; // get from server, signed
-  let response = await Alipay.authWithInfo(infoStr);
-  console.info(response);
+    let infoStr =
+        'apiname=com.alipay.account.auth&method=alipay.open.auth.sdk.code.get&app_id=xxxx&app_name=mc&biz_type=openservice&pid=xxxx&product_id=APP_FAST_LOGIN&scope=kuaijie&target_id=xxxx&auth_type=AUTHACCOUNT&sign_type=RSA2&sign=xxxx'; // get from server, signed
+    let response = await Alipay.authWithInfo(infoStr);
+    console.info(response);
 
-  let { resultStatus, result, memo } = response;
-  let { success, result_code, auth_code, user_id } = QueryString.parse(result);
+    let { resultStatus, result, memo } = response;
+    let { success, result_code, auth_code, user_id } = QueryString.parse(result);
 
-  // TODO: ...
+    // TODO: ...
 } catch (error) {
-  console.error(error);
+    console.error(error);
 }
 ```
 
 ### Alipay.setAlipaySandbox(isSandbox)
 
-- `isSandbox` {boolean} Whether to open sandbox. Must be payed before use. See [使用沙箱环境](https://docs.open.alipay.com/200/105311)
+-   `isSandbox` {boolean} Whether to open sandbox. Must be payed before use. See [使用沙箱环境](https://docs.open.alipay.com/200/105311)
 
 ### Alipay.pay(orderStr)
 
-- `orderStr` {String} Order info in query string format. Must be signed before use. See [App payment request params description](https://docs.open.alipay.com/204/105465/).
+-   `orderStr` {String} Order info in query string format. Must be signed before use. See [App payment request params description](https://docs.open.alipay.com/204/105465/).
 
 Returns object with following fields:
 
@@ -120,39 +120,30 @@ The `result` data has following fields:
 Example code:
 
 ```javascript
-import Alipay from "@0x5e/react-native-alipay";
+import Alipay from '@0x5e/react-native-alipay';
 
 // APP支付
 try {
-  // 打开沙箱
-  Alipay.setAlipaySandbox(true);
-  let orderStr =
-    "app_id=xxxx&method=alipay.trade.app.pay&charset=utf-8&timestamp=2014-07-24 03:07:50&version=1.0&notify_url=https%3A%2F%2Fapi.xxx.com%2Fnotify&biz_content=%7B%22subject%22%3A%22%E5%A4%A7%E4%B9%90%E9%80%8F%22%2C%22out_trade_no%22%3A%22xxxx%22%2C%22total_amount%22%3A%229.00%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%7D&sign_type=RSA2&sign=xxxx"; // get from server, signed
-  let response = await Alipay.pay(orderStr);
-  console.info(response);
+    // 打开沙箱
+    Alipay.setAlipaySandbox(true);
+    let orderStr =
+        'app_id=xxxx&method=alipay.trade.app.pay&charset=utf-8&timestamp=2014-07-24 03:07:50&version=1.0&notify_url=https%3A%2F%2Fapi.xxx.com%2Fnotify&biz_content=%7B%22subject%22%3A%22%E5%A4%A7%E4%B9%90%E9%80%8F%22%2C%22out_trade_no%22%3A%22xxxx%22%2C%22total_amount%22%3A%229.00%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%7D&sign_type=RSA2&sign=xxxx'; // get from server, signed
+    let response = await Alipay.pay(orderStr);
+    console.info(response);
 
-  let { resultStatus, result, memo } = response;
-  let {
-    code,
-    msg,
-    app_id,
-    out_trade_no,
-    trade_no,
-    total_amount,
-    seller_id,
-    charset,
-    timestamp,
-  } = JSON.parse(result);
+    let { resultStatus, result, memo } = response;
+    let { code, msg, app_id, out_trade_no, trade_no, total_amount, seller_id, charset, timestamp } =
+        JSON.parse(result);
 
-  // TODO: ...
+    // TODO: ...
 } catch (error) {
-  console.error(error);
+    console.error(error);
 }
 ```
 
 ### Alipay.payInterceptorWithUrl(h5PayUrl)
 
-- `h5PayUrl` {String} The url string of mobile webpage payment. You may get it from webview. See [document](https://docs.open.alipay.com/204/105695/) for detail.
+-   `h5PayUrl` {String} The url string of mobile webpage payment. You may get it from webview. See [document](https://docs.open.alipay.com/204/105695/) for detail.
 
 Returns object with following fields:
 
@@ -164,16 +155,16 @@ Returns object with following fields:
 Example code:
 
 ```javascript
-import Alipay from "@0x5e/react-native-alipay";
+import Alipay from '@0x5e/react-native-alipay';
 
 // 手机网站转APP支付
 try {
-  let h5PayUrl =
-    "https://wappaygw.alipay.com/service/rest.htm?_input_charset=utf-8&format=xml&partner=xxxx&req_data=%3Cauth_and_execute_req%3E%3Crequest_token%3Exxxx%3C%2Frequest_token%3E%3C%2Fauth_and_execute_req%3E&sec_id=MD5&service=alipay.wap.auth.authAndExecute&v=2.0&sign=xxxx"; // get from webview, signed
-  let { resultCode, returnUrl } = await Alipay.payInterceptorWithUrl(h5PayUrl);
-  console.info(resultCode, returnUrl);
+    let h5PayUrl =
+        'https://wappaygw.alipay.com/service/rest.htm?_input_charset=utf-8&format=xml&partner=xxxx&req_data=%3Cauth_and_execute_req%3E%3Crequest_token%3Exxxx%3C%2Frequest_token%3E%3C%2Fauth_and_execute_req%3E&sec_id=MD5&service=alipay.wap.auth.authAndExecute&v=2.0&sign=xxxx'; // get from webview, signed
+    let { resultCode, returnUrl } = await Alipay.payInterceptorWithUrl(h5PayUrl);
+    console.info(resultCode, returnUrl);
 } catch (error) {
-  console.error(error);
+    console.error(error);
 }
 ```
 
@@ -181,8 +172,8 @@ try {
 
 If you want to do client side signature instead of server side (not recommend), you can use this.
 
-- `object` {Object} Object to be signed. The `object.sign_type` can specify `RSA` (default) or `RSA2`.
-- `privateKey` {String} Private key in `PKCS#1` or `PKCS#8` format.
+-   `object` {Object} Object to be signed. The `object.sign_type` can specify `RSA` (default) or `RSA2`.
+-   `privateKey` {String} Private key in `PKCS#1` or `PKCS#8` format.
 
 Note:
 `PKCS#1` private key should have wrapped with `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----`
