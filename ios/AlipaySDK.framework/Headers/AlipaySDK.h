@@ -9,11 +9,13 @@
 
 ////////////////////////////////////////////////////////
 ///////////////// 支付宝标准版本支付SDK ///////////////////
-///////// version:15.7.3  motify:2020.02.13///////////
+///////// version:15.8.05  motify:2021.07.16///////////
 ////////////////////////////////////////////////////////
 
 #import <UIKit/UIKit.h>
 #import "APayAuthInfo.h"
+#import "AFServiceCenter.h"
+#import "AFServiceResponse.h"
 
 typedef void(^CompletionBlock)(NSDictionary *resultDic);
 
