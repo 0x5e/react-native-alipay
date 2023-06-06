@@ -6,7 +6,7 @@ def safeExtGet(prop, fallback) {
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
@@ -35,5 +35,5 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+    implementation "com.alipay.sdk:alipaysdk-android:15.8.14@aar"
 }
